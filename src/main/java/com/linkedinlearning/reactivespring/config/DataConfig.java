@@ -21,7 +21,7 @@ public class DataConfig {
     public ReactiveMongoDatabaseFactory mongoDatabaseFactory(MongoClient mongoClient){
         return new SimpleReactiveMongoDatabaseFactory(mongoClient,DATABASE_NAME);
     }
-
+    @Bean
     public ReactiveMongoOperations reactiveMongoOperations(ReactiveMongoDatabaseFactory mongoDatabaseFactory){
         return new ReactiveMongoTemplate(mongoDatabaseFactory);
     }
