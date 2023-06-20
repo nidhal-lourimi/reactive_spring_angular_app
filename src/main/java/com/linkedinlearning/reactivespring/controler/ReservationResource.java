@@ -5,11 +5,12 @@ import com.linkedinlearning.reactivespring.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping(ReservationResource.ROOM_V_1_RESERVATION)
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 public class ReservationResource {
     public static final String ROOM_V_1_RESERVATION = "/room/v1/reservation";
     private final ReservationService reservationService;
@@ -36,6 +37,9 @@ public class ReservationResource {
         return reservationService.deleteReservation(id);
     }
 
-
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public Flux<Reservation> getAllReservations(){
+    return reservationService.getAllReservations();
+    }
 
 }

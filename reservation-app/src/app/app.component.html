@@ -42,6 +42,28 @@
             class="hidesm" src="/assets/images/intro_wedding.jpg"
             alt="Intro Gallery Dining Sample Pictures">
           </div>
+
+          <div class="row" *ngIf="currentReservation">
+            <h1>Current Reservation</h1>
+            <div *ngFor="let reservation of currentReservation">
+              <ul>
+                <li>
+                  <strong>Room #:</strong>{{reservation.roomNumber}}
+                </li>
+                <li>
+                  <strong>Price $:</strong>{{reservation.price}}
+                </li>
+                <li>
+                  <strong>Check-in #:</strong>{{reservation.checkIn.toString().split(",")[1]}}-{{reservation.checkIn.toString().split(",")[2]}}
+                </li>
+                <li>
+                  <strong>Check-out #:</strong>{{reservation.checkOut.toString().split(",")[1]}}-{{reservation.checkOut.toString().split(",")[2]}}
+                </li>
+              </ul>
+              <br/>
+            </div>
+            <hr>
+          </div>
           <h1>Available room</h1>
           <div class="row" *ngIf="rooms">
             <div class="col-12">

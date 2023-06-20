@@ -18,6 +18,10 @@ export class ReservationService {
     };
    return  this.http.post<Reservation>(this.reservationUrl, body, httpOptions)
   }
+
+  getAllReservation():Observable<Reservation[]>{
+    return  this.http.get<Reservation[]>(this.reservationUrl);
+  }
 }
 export class ReservationRequest {
   roomNumber: number;
@@ -37,5 +41,6 @@ export interface Reservation{
   roomNumber:number;
   checkIn:Date;
   checkOut:Date;
+  price:number;
 
 }
